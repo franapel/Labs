@@ -31,6 +31,9 @@ DEBUG = os.getenv('DEBUG') if os.getenv('DEBUG') is not None else True
 
 ALLOWED_HOSTS = ["127.0.0.1" if os.getenv('URL_HOST') is None else os.getenv('URL_HOST')]
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Application definition
 
