@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["127.0.0.1" if os.getenv('URL_HOST') is None else os.getenv('UR
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
 
 # Application definition
