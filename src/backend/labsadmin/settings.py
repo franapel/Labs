@@ -27,7 +27,7 @@ DATE_FORMAT = 'd/m/Y'
 SECRET_KEY = os.getenv('DJANGO_SECRET') if os.getenv('DJANGO_SECRET') is not None else 'django-insecure-qr_5n+&dx%l3-1t)-&m84nw-id707e#@$f9_e*)jdb6*e6ri6+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG') if os.getenv('DEBUG') is not None else True
+DEBUG = False if os.getenv('DEBUG') is None else True
 
 ALLOWED_HOSTS = ["127.0.0.1" if os.getenv('URL_HOST') is None else os.getenv('URL_HOST')]
 
@@ -108,7 +108,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(os.getenv('REDIS_URL'), os.getenv('REDIS_PORT') if os.getenv('REDIS_PORT') is not None else 6379)],
+            "hosts": [(os.getenv('REDIS_URL'), 6379 if os.getenv('REDIS_PORT') is None else os.getenv('REDIS_PORT'))],
         },
     },
 }
@@ -195,7 +195,7 @@ WSGI_APPLICATION = 'labsadmin.wsgi.application'
 config = {} # This initialize database config
 
 
-HEROKU_DEPLOY = os.getenv('HEROKU_DEPLOY') if os.getenv('HEROKU_DEPLOY') is not None else False
+HEROKU_DEPLOY = False if os.getenv('HEROKU_DEPLOY') is None else True
 
 # Depending of "DB_type" this code configure the environment for works with Heroku, Local or Production DB
 # If the environtment it's not configured this project works as "dev mode" that implies works sqlite
