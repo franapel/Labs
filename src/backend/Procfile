@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn labsadmin.wsgi && daphne -p 8001 labsadmin.asgi:application
+web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn labsadmin.wsgi && daphne labsadmin.asgi:application
