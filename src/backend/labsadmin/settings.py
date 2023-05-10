@@ -108,7 +108,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(os.getenv('REDIS_URL'), os.getenv('REDIS_PORT'))],
+            "hosts": [("redis://default:cbRcY0ZEp3kDoWTxPu1j@containers-us-west-112.railway.app:7250")],
         },
     },
 }
