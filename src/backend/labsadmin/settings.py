@@ -108,7 +108,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(os.getenv('REDIS_URL'), 6379 if os.getenv('REDIS_PORT') is None else os.getenv('REDIS_PORT'))],
+            "hosts": [(os.getenv('REDIS_URL'), os.getenv('REDIS_PORT'))],
         },
     },
 }
@@ -225,7 +225,15 @@ else:
         }
     }
     
-DATABASES = config
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('NAME'),
+            'USER': os.getenv('USER'),
+            'PASSWORD': os.getenv('PASSWORD'),
+            'HOST': os.getenv('HOST'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
